@@ -19,7 +19,7 @@ Build mode: fast
   Learner check: Run the command on a Markdown file with your own one-line guard and read the table.
   Commit: `Run a guard against a placeholder mutant end to end`
 
-- [ ] **2. The harness cannot lie: three-state self-test**
+- [x] **2. The harness cannot lie: three-state self-test**
   Becomes usable: Baseline failure, unchanged bytes and failed semantic checks all report INCONCLUSIVE; non-applicable formats report NOT APPLICABLE.
   Why now: The kernel's credibility depends on it; every later mutator relies on `verify()`.
   PRD ref: `prd.md > The three-state self-test`
