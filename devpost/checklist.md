@@ -9,7 +9,7 @@ Build mode: fast
 
 ## Slices
 
-- [ ] **1. One mutator end to end: a guard is caught passing placeholder text**
+- [x] **1. One mutator end to end: a guard is caught passing placeholder text**
   Becomes usable: `node bin/falsegreen.js run --guard "<cmd>" --artifact x.md` runs a baseline, applies `placeholder-as-content`, runs the guard on the mutant and prints CAUGHT or FALSE GREEN.
   Why now: Proves the whole path (CLI → guard runner → mutator → verdict → table) with the kernel's most striking family first.
   PRD ref: `prd.md > The Core Journey` (steps 1-7), `prd.md > Running a guard against mutants`

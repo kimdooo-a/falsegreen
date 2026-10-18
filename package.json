@@ -1,0 +1,39 @@
+{
+  "name": "falsegreen",
+  "version": "0.1.0",
+  "description": "Mutation testing for the guards in your pipeline: break a good artifact on purpose and see if your verify step still says pass.",
+  "type": "module",
+  "bin": {
+    "falsegreen": "bin/falsegreen.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "bench",
+    "FAILURE_MODES.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "bench": "node bin/falsegreen.js bench",
+    "demo": "node examples/demo.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "mutation-testing",
+    "guards",
+    "verification",
+    "evals",
+    "ai-agents",
+    "pipelines",
+    "red-teaming"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kimdooo-a/falsegreen.git"
+  },
+  "license": "MIT"
+}
