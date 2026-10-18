@@ -39,7 +39,7 @@ Build mode: fast
   Learner check: Run `falsegreen list` and one `run` on an SVG.
   Commit: `Implement the twelve mutator families`
 
-- [ ] **4. Reports and exit codes**
+- [x] **4. Reports and exit codes**
   Becomes usable: `--json`, `--report out.md`, exit codes 0/1/2, "blind to N of M" summary line with a FAILURE_MODES link.
   Why now: Needed for CI use and for the bench.
   PRD ref: `prd.md > Reports`
@@ -91,3 +91,4 @@ Reflection: not offered (asynchronous build).
 Activity mode: recap.
 
 ## Revisions
+- JSON and Markdown reporters landed in slice 1, not slice 4 — the CLI imports them at startup, so slice 4 became exit-code and report tests only.
