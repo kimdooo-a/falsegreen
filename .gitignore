@@ -1,0 +1,18 @@
+# Personal learning context (Devpost Learn skill pack keeps this out of commits)
+/devpost/learner-profile.md
+
+# Local credentials
+.env
+.env.*
+!.env.example
+
+# Agent-harness links created by `npx skills add` (absolute, machine-specific symlinks).
+# The canonical skill pack copy lives in .agents/skills/ and is committed.
+/.claude/
+/agent/
+
+# Runtime
+node_modules/
+*.log
+falsegreen-report.md
+.fg-*
