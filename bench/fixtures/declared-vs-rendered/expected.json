@@ -1,0 +1,8 @@
+{
+  "family": "declared-vs-rendered",
+  "artifact": "poster.svg",
+  "expect": {
+    "naive": "FALSE_GREEN",
+    "hardened": "CAUGHT"
+  }
+}

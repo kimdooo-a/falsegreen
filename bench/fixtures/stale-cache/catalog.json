@@ -1,0 +1,21 @@
+{
+  "built_at": "2026-10-18T09:00:00Z",
+  "content_sha256": "ae38bd91abc23657c0fd2240dd5e5b4ea0a1f72dcbe76dfc6763d7d7e343388f",
+  "items": [
+    {
+      "sku": "lamp-01",
+      "name": "Desk lamp with a warm dimmer",
+      "price": 4900
+    },
+    {
+      "sku": "chair-07",
+      "name": "Folding chair in recycled oak",
+      "price": 12900
+    },
+    {
+      "sku": "mug-12",
+      "name": "Stoneware mug, glazed by hand",
+      "price": 1800
+    }
+  ]
+}

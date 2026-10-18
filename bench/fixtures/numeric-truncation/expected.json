@@ -1,0 +1,8 @@
+{
+  "family": "numeric-truncation",
+  "artifact": "ledger.csv",
+  "expect": {
+    "naive": "FALSE_GREEN",
+    "hardened": "CAUGHT"
+  }
+}

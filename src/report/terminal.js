@@ -30,7 +30,7 @@ export function verdictCell(c, verdict) {
 export function createTerminalReporter({ out = process.stdout, color, verbose = false, version = '' } = {}) {
   const c = palette(color);
   const W = termWidth(out);
-  const write = (s = '') => out.write(s + '\n');
+  const write = (s = '') => out.write(s.replace(/\s+$/, '') + '\n');
   const COL_FAMILY = 28;
   const COL_VERDICT = 15;
   const COL_NOTE = W - 2 - 4 - COL_FAMILY - COL_VERDICT;

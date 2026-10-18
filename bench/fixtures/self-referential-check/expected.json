@@ -1,0 +1,8 @@
+{
+  "family": "self-referential-check",
+  "artifact": "manifest.json",
+  "expect": {
+    "naive": "FALSE_GREEN",
+    "hardened": "CAUGHT"
+  }
+}

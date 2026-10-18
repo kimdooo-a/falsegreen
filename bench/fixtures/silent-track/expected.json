@@ -1,0 +1,8 @@
+{
+  "family": "silent-track",
+  "artifact": "narration.wav",
+  "expect": {
+    "naive": "FALSE_GREEN",
+    "hardened": "CAUGHT"
+  }
+}

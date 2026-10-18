@@ -1,0 +1,8 @@
+{
+  "family": "structured-overrides-body",
+  "artifact": "field-report.md",
+  "expect": {
+    "naive": "FALSE_GREEN",
+    "hardened": "CAUGHT"
+  }
+}

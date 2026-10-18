@@ -1,0 +1,8 @@
+{
+  "family": "overflow",
+  "artifact": "title-card.svg",
+  "expect": {
+    "naive": "FALSE_GREEN",
+    "hardened": "CAUGHT"
+  }
+}

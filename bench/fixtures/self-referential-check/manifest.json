@@ -1,0 +1,16 @@
+{
+  "release": "2026.10",
+  "status": "complete",
+  "files": [
+    {
+      "path": "assets/cover.svg",
+      "exists": true,
+      "checked": true
+    },
+    {
+      "path": "assets/chart.svg",
+      "exists": true,
+      "checked": true
+    }
+  ]
+}

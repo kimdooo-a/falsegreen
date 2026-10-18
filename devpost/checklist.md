@@ -29,7 +29,7 @@ Build mode: fast
   Learner check: Point the tool at a guard that always fails and read the explanation.
   Commit: `Add three-state self-test and core tests`
 
-- [ ] **3. All twelve failure families**
+- [x] **3. All twelve failure families**
   Becomes usable: `falsegreen list` shows 12 families; `run` applies every mutator that fits the artifact's format.
   Why now: The catalogue is the product's substance; reporters and bench consume it.
   PRD ref: `prd.md > Mutator catalogue`

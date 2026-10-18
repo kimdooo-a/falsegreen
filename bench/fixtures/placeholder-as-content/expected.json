@@ -1,0 +1,8 @@
+{
+  "family": "placeholder-as-content",
+  "artifact": "summary.md",
+  "expect": {
+    "naive": "FALSE_GREEN",
+    "hardened": "CAUGHT"
+  }
+}

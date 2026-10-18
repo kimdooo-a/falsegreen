@@ -1,0 +1,8 @@
+{
+  "family": "dead-regex",
+  "artifact": "rules.json",
+  "expect": {
+    "naive": "FALSE_GREEN",
+    "hardened": "CAUGHT"
+  }
+}

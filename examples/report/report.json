@@ -1,0 +1,30 @@
+{
+  "title": "Weekly market digest — São Paulo and Zürich desks",
+  "generated_at": "2026-10-18T09:00:00Z",
+  "item_count": 3,
+  "total_amount": 2263550000,
+  "content_sha256": "4bd57770ad093adb1202a04bca96e4dbd5b3f006421ca8babf225c6a09755efe",
+  "items": [
+    {
+      "id": "d-01",
+      "headline": "Port volumes recover after the strike",
+      "summary": "Container throughput returned to its seasonal average within nine days.",
+      "amount": 2150000000,
+      "attachment": "charts/ports.svg"
+    },
+    {
+      "id": "d-02",
+      "headline": "Café chains raise prices again",
+      "summary": "Three national chains added between four and seven percent to menu prices.",
+      "amount": 96300000,
+      "attachment": "charts/cafes.svg"
+    },
+    {
+      "id": "d-03",
+      "headline": "Rail freight bookings flatten",
+      "summary": "Bookings held steady for a fourth week as fuel costs stabilised.",
+      "amount": 17250000,
+      "attachment": "charts/rail.svg"
+    }
+  ]
+}

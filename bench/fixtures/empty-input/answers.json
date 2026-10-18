@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-10-18T09:00:00Z",
+  "items": [
+    {
+      "id": "q-101",
+      "question": "Which regions reported outages this week?",
+      "answer": "Two regions reported short outages; both recovered within an hour."
+    },
+    {
+      "id": "q-102",
+      "question": "Did the nightly export finish on time?",
+      "answer": "Yes, every nightly export finished before the 06:00 deadline."
+    },
+    {
+      "id": "q-103",
+      "question": "Were any customer tickets escalated?",
+      "answer": "One ticket was escalated and resolved by the on-call engineer."
+    }
+  ]
+}

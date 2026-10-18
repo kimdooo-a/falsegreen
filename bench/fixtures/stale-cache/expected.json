@@ -1,0 +1,8 @@
+{
+  "family": "stale-cache",
+  "artifact": "catalog.json",
+  "expect": {
+    "naive": "FALSE_GREEN",
+    "hardened": "CAUGHT"
+  }
+}
