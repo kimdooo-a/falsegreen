@@ -49,7 +49,7 @@ Build mode: fast
   Learner check: Open the generated Markdown report.
   Commit: `Add JSON and Markdown reports and exit codes`
 
-- [ ] **5. Bench: naive vs hardened over 12 fixtures**
+- [x] **5. Bench: naive vs hardened over 12 fixtures**
   Becomes usable: `falsegreen bench` prints a coverage comparison and checks every expected verdict.
   Why now: The demo's key scene and the evals deliverable.
   PRD ref: `prd.md > Bench`
