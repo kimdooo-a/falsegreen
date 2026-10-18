@@ -59,7 +59,7 @@ Build mode: fast
   Learner check: Run `falsegreen bench` and read the two coverage numbers.
   Commit: `Add bench fixtures and reference guards`
 
-- [ ] **6. Demo and documentation**
+- [x] **6. Demo and documentation**
   Becomes usable: `node examples/demo.mjs` tells the story in under 30 s; README, FAILURE_MODES.md and PREEXISTING.md explain the tool.
   Why now: Required for submission; written last so it describes what exists.
   PRD ref: `prd.md > What We're Building`
@@ -71,8 +71,8 @@ Build mode: fast
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — after slice 1 (author reviewed the placeholder run output)
-- [ ] Final kick-the-tires exploration and feedback completed — author's review is the demo recording step that follows this build
+- [ ] Early usable behavior explored — pending: the author tries `node examples/demo.mjs` (asynchronous build; not yet reported back)
+- [ ] Final kick-the-tires exploration and feedback completed — pending: happens while recording the demo video
 
 ## Final Review
 
@@ -82,13 +82,15 @@ Build mode: fast
 
 - [ ] Learning activity complete — brief recap (familiar plan-first author)
 - [ ] Optional edit and transfer reflection addressed — not applicable
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: recap of the run path `src/cli.js` → `src/engine.js` → `src/guard.js`, evidenced by `test/engine.test.js`.
+Activity and evidence: not yet done with the author; prepared recap of the run path `src/cli.js` → `src/engine.js` → `src/guard.js`, evidenced by `test/engine.test.js`.
 Route and stops: reference route in `devpost/app-map.html`.
 Edit outcome: not applicable.
 Reflection: not offered (asynchronous build).
 Activity mode: recap.
 
 ## Revisions
+- Note column and table widths were tightened after the demo measured 115 columns — the recording target is 80–100 columns (now max 80 at COLUMNS=80).
+- `dead-regex` verify() read its own list instead of the mutant bytes — caught by the new "verify() must reject the unmutated artifact" test; fixed to parse the mutant.
 - JSON and Markdown reporters landed in slice 1, not slice 4 — the CLI imports them at startup, so slice 4 became exit-code and report tests only.

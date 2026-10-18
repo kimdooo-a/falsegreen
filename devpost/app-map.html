@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>falsegreen app map</title>
+<style>
+  :root { --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --line: #d1d9e0; --card: #f6f8fa; --red: #cf222e; --green: #1a7f37; --amber: #9a6700; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --line: #3d444d; --card: #151b23; --red: #ff7b72; --green: #3fb950; --amber: #d29922; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.6rem; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 36px 0 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+  p.lede { color: var(--muted); margin: 0 0 20px; }
+  code { font: 0.9em ui-monospace, SFMono-Regular, Consolas, monospace; background: var(--card); padding: 1px 5px; border-radius: 4px; }
+  pre { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow-x: auto; font: 13px/1.5 ui-monospace, Consolas, monospace; }
+  ol.route > li { margin: 0 0 14px; }
+  .path { font-weight: 600; }
+  details { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; margin: 8px 0; background: var(--card); }
+  summary { cursor: pointer; font-weight: 600; }
+  svg text { fill: var(--fg); font: 12px system-ui, sans-serif; }
+  svg .box { fill: var(--card); stroke: var(--line); }
+  svg .arrow { stroke: var(--muted); fill: none; marker-end: url(#a); }
+  svg .red { fill: var(--red); } svg .green { fill: var(--green); } svg .amber { fill: var(--amber); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  td, th { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .muted { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>falsegreen: app map</h1>
+  <p class="lede">A take-home guide to the code. It is a snapshot of the finished build and can drift; the source is the truth.</p>
+
+  <h2>What it is</h2>
+  <p>A CLI that breaks a good artifact on purpose and runs your guard on the broken copy. It has four pieces:</p>
+  <ul>
+    <li>the <strong>guard runner</strong>, which runs your command and reads its exit code</li>
+    <li>twelve <strong>mutators</strong>, each of which breaks a file one specific way and can prove it did</li>
+    <li>the <strong>engine</strong>, which applies the baseline, bytes and self-test gates and then gives a verdict</li>
+    <li>the <strong>reporters</strong>, which produce the terminal table, JSON and Markdown output</li>
+  </ul>
+
+  <h2>One action, end to end</h2>
+  <p><code>falsegreen run --guard "node verify.mjs {artifact}" --artifact report.json</code></p>
+  <svg viewBox="0 0 820 230" width="100%" role="img" aria-label="Flow: CLI to engine; engine runs baseline, then for each mutator mutate, self-test, write mutant, run guard, verdict; reporter prints table.">
+    <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+    <rect class="box" x="10" y="20" width="130" height="50" rx="8"/><text x="22" y="42">src/cli.js</text><text x="22" y="58" class="muted">cmdRun()</text>
+    <rect class="box" x="180" y="20" width="160" height="50" rx="8"/><text x="192" y="42">src/engine.js</text><text x="192" y="58">runEngine()</text>
+    <rect class="box" x="380" y="20" width="150" height="50" rx="8"/><text x="392" y="42">src/guard.js</text><text x="392" y="58">runGuard() · baseline</text>
+    <rect class="box" x="180" y="120" width="160" height="80" rx="8"/><text x="192" y="142">src/mutators/*.js</text><text x="192" y="160">applies() → mutate()</text><text x="192" y="178">→ verify()</text>
+    <rect class="box" x="380" y="120" width="150" height="80" rx="8"/><text x="392" y="142">.fg-&lt;id&gt;-file</text><text x="392" y="160">written beside the</text><text x="392" y="178">artifact → runGuard()</text>
+    <rect class="box" x="570" y="70" width="230" height="90" rx="8"/><text x="582" y="92">verdict</text>
+    <text x="582" y="112" class="green">exit ≠ 0 → CAUGHT</text><text x="582" y="130" class="red">exit 0 → FALSE GREEN</text><text x="582" y="148" class="amber">gate failed → INCONCLUSIVE</text>
+    <path class="arrow" d="M140 45 H178"/><path class="arrow" d="M340 45 H378"/><path class="arrow" d="M260 70 V118"/>
+    <path class="arrow" d="M340 160 H378"/><path class="arrow" d="M530 150 H568"/><path class="arrow" d="M530 45 Q560 45 568 90"/>
+  </svg>
+
+  <h2>Reference route (3 stops)</h2>
+  <p class="muted">This is a reference route; it was not toured live. Search for the anchor names in your editor.</p>
+  <ol class="route">
+    <li><span class="path">src/cli.js</span>, search for <code>function cmdRun</code>. This parses <code>--guard</code> and <code>--artifact</code>, picks the mutators, and wires the streaming terminal reporter to the engine's callbacks.</li>
+    <li><span class="path">src/engine.js</span>, search for <code>export function runEngine</code>. This is the three gates: the baseline (<code>Gate 1</code>), <code>after.equals(ctx.bytes)</code> (<code>Gate 2</code>), and <code>m.verify</code> (<code>Gate 3</code>). Only after all three does a guard exit code become a verdict.</li>
+    <li><span class="path">src/mutators/placeholder-as-content.js</span>, search for <code>verify(ctx, m)</code>. This is a mutator proving its own work: placeholder text is present, the original text is gone, and the size is within ±15%.</li>
+  </ol>
+
+  <h2>To change this, start here</h2>
+  <table>
+    <tr><th>You want to…</th><th>Start at</th></tr>
+    <tr><td>add a failure family</td><td><code>src/mutators/&lt;new&gt;.js</code> + register in <code>src/mutators/index.js</code> + a fixture via <code>bench/make-fixtures.mjs</code> + a section in <code>FAILURE_MODES.md</code></td></tr>
+    <tr><td>change the table layout</td><td><code>src/report/terminal.js</code> (<code>COL_FAMILY</code>, <code>COL_VERDICT</code>)</td></tr>
+    <tr><td>change exit codes</td><td><code>exitCodeFor()</code> in <code>src/engine.js</code></td></tr>
+    <tr><td>make the reference guard stricter</td><td><code>bench/guards/hardened.mjs</code> (conventions at the top)</td></tr>
+  </table>
+
+  <h2>A practice to reuse</h2>
+  <details open>
+    <summary>Make the tool prove its own negative result before reporting yours</summary>
+    <p><code>test/mutators.test.js</code> hands each mutator's <code>verify()</code> the <em>unmutated</em> file and requires a rejection. That one test caught <code>dead-regex</code> trusting the list of patterns it had built, instead of reading the mutant back. This is the same "asks its own list" failure the tool hunts. On any project, wherever a component reports success, add a test that feeds it a case where nothing happened, and require that it does not report success.</p>
+  </details>
+
+  <h2>Run it again</h2>
+<pre>node --test                      # 43 tests
+node bin/falsegreen.js bench     # naive 0/12 vs hardened 12/12
+node examples/demo.mjs           # ~20 s scripted demo</pre>
+</main>
+</body>
+</html>
