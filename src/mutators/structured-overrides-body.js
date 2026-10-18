@@ -63,12 +63,12 @@ export default {
       const { value, countKey, arrayKey } = jsonPlan(ctx);
       const n = value[arrayKey].length;
       value[arrayKey] = value[arrayKey].slice(0, 1);
-      return { bytes: Buffer.from(stringifyLike(value, ctx.text)), countKey, arrayKey, note: `${arrayKey}: ${n} → 1 entries; "${countKey}" still says ${n}` };
+      return { bytes: Buffer.from(stringifyLike(value, ctx.text)), countKey, arrayKey, note: `${arrayKey} ${n} → 1; ${countKey} still ${n}` };
     }
     const { fm, field } = mdPlan(ctx);
     const body = halveBody(fm.body, field);
     const now = field === 'sections' ? sectionCount(body) : wordCount(body);
-    return { bytes: Buffer.from(joinFrontMatter(fm.fields, fm.order, body)), field, note: `body cut to ${now} ${field === 'sections' ? 'sections' : 'words'}; "${field}" still says ${fm.fields[field]}` };
+    return { bytes: Buffer.from(joinFrontMatter(fm.fields, fm.order, body)), field, note: `body → ${now} ${field === 'sections' ? 'sections' : 'words'}; ${field} still ${fm.fields[field]}` };
   },
 
   verify(ctx, m) {

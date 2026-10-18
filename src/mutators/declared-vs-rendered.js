@@ -51,11 +51,11 @@ export default {
       const before = declaredFonts(ctx.text);
       const out = ctx.text.replace(FONT_RE, (all, a1, v1, a3, b1) =>
         a1 !== undefined ? `${a1}${UNAVAILABLE_FONT}${a3}` : `${b1}'${UNAVAILABLE_FONT}'`);
-      return { bytes: Buffer.from(out), strategy: 'font', note: `font-family "${before[0]}" → "${UNAVAILABLE_FONT}" (not available to the renderer)` };
+      return { bytes: Buffer.from(out), strategy: 'font', note: `font "${before[0]}" → "${UNAVAILABLE_FONT}" (not installed)` };
     }
     const bytes = toLatin1(ctx.text);
     const changed = [...ctx.text].filter((c) => c.codePointAt(0) > 0x7f).length;
-    return { bytes, strategy: 'encoding', note: `re-encoded as Latin-1: ${changed} non-ASCII char${changed === 1 ? '' : 's'} now render as U+FFFD in UTF-8 readers` };
+    return { bytes, strategy: 'encoding', note: `re-encoded Latin-1: ${changed} char${changed === 1 ? '' : 's'} now read as U+FFFD` };
   },
 
   verify(ctx, m) {

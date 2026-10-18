@@ -41,7 +41,7 @@ export default {
     const rect = `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(r - x).toFixed(1)}" height="${(b - y).toFixed(1)}" fill="${fill}"/>`;
     const close = ctx.text.lastIndexOf('</svg>');
     const out = ctx.text.slice(0, close) + `  ${rect}\n` + ctx.text.slice(close);
-    return { bytes: Buffer.from(out), rect, note: `opaque ${fill} <rect> drawn over ${texts.length} text element${texts.length === 1 ? '' : 's'}; text still in the file` };
+    return { bytes: Buffer.from(out), rect, note: `opaque rect over ${texts.length} text${texts.length === 1 ? '' : 's'}; text kept` };
   },
 
   verify(ctx, m) {

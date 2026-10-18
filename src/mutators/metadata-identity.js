@@ -50,22 +50,22 @@ export default {
       case 'svg': {
         const meta = `\n  <metadata><creator>${IDENTITY.user}</creator><source>${path}</source></metadata>`;
         const out = ctx.text.replace(/<svg\b[^>]*>/i, (root) => root + meta);
-        return { bytes: Buffer.from(out), note: `<metadata> creator "${IDENTITY.user}" + home path; visible text unchanged` };
+        return { bytes: Buffer.from(out), note: `<metadata> creator ${IDENTITY.user} + home path` };
       }
       case 'markdown': {
         const fm = splitFrontMatter(ctx.text);
         const fields = { ...fm.fields, author: IDENTITY.user, source: path };
-        return { bytes: Buffer.from(joinFrontMatter(fields, fm.order, fm.body)), note: `front matter author "${IDENTITY.user}" + home path; body unchanged` };
+        return { bytes: Buffer.from(joinFrontMatter(fields, fm.order, fm.body)), note: `front matter author ${IDENTITY.user} + home path` };
       }
       case 'json': {
         const v = JSON.parse(ctx.text);
         v._meta = { author: IDENTITY.user, host: IDENTITY.host, cwd: `${IDENTITY.home}/Projects/client-review` };
-        return { bytes: Buffer.from(stringifyLike(v, ctx.text)), note: `"_meta" with user "${IDENTITY.user}", host and home path; content unchanged` };
+        return { bytes: Buffer.from(stringifyLike(v, ctx.text)), note: `_meta: user ${IDENTITY.user}, host, home path` };
       }
       case 'wav': {
         const w = parseWav(ctx.bytes);
         const list = infoChunk({ IART: IDENTITY.user, ICMT: path });
-        return { bytes: buildWav([...w.chunks, list]), note: `RIFF LIST/INFO artist "${IDENTITY.user}" + home path; audio unchanged` };
+        return { bytes: buildWav([...w.chunks, list]), note: `LIST/INFO artist ${IDENTITY.user} + home path` };
       }
       default: throw new Error('unsupported');
     }

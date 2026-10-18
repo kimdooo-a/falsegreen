@@ -118,10 +118,10 @@ function cmdList(flags, io) {
   w();
   w(`  ${c.bold('falsegreen')} ${c.dim(`· ${MUTATORS.length} failure families · details in FAILURE_MODES.md`)}`);
   w();
-  w(`  ${c.dim(pad('#', 4) + pad('FAMILY', 28) + 'FORMATS')}`);
+  w(`  ${c.dim(pad('#', 4) + pad('FAMILY', 27) + 'FORMATS')}`);
   w(`  ${c.dim('─'.repeat(W - 4))}`);
   for (const m of MUTATORS) {
-    w(`  ${c.dim(pad(familyNumber(m.id), 4))}${pad(c.bold(m.id), 28)}${c.cyan(m.formats.join(' '))}`);
+    w(`  ${c.dim(pad(familyNumber(m.id), 4))}${pad(c.bold(m.id), 27)}${c.cyan(m.formats.join(' '))}`);
     w(`  ${' '.repeat(4)}${c.dim(truncate(m.summary, W - 8))}`);
   }
   w();

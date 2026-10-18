@@ -52,7 +52,7 @@ export default {
       bytes: Buffer.from(stringifyLike(v, ctx.text)),
       before,
       after: rules.map((r) => r.parent[r.key]),
-      note: `${rules.length} pattern${rules.length === 1 ? '' : 's'} wrapped in word boundaries/anchors ("${before[0].pattern.slice(0, 14)}" → "${kill(before[0].pattern).slice(0, 22)}")`,
+      note: `${rules.length} pattern${rules.length === 1 ? '' : 's'} wrapped in \\b…\\b or ^…$ (look stricter)`,
     };
   },
 

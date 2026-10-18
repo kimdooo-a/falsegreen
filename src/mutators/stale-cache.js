@@ -57,14 +57,14 @@ export default {
       const { value, digestKey, contentKey } = jsonPlan(ctx);
       const what = changeOneValue(value[contentKey]);
       if (!what) return { bytes: ctx.bytes, note: 'nothing editable', digestKey };
-      return { bytes: Buffer.from(stringifyLike(value, ctx.text)), digestKey, contentKey, note: `${contentKey}: ${what}; "${digestKey}" left unchanged` };
+      return { bytes: Buffer.from(stringifyLike(value, ctx.text)), digestKey, contentKey, note: `${contentKey} edited; ${digestKey} kept` };
     }
     const { fm, digestKey } = mdPlan(ctx);
     const lines = fm.body.split('\n');
     const i = lines.findIndex((l) => isProse(l) && !/^\s*#/.test(l));
     if (i < 0) return { bytes: ctx.bytes, note: 'no prose line to edit', digestKey };
     lines[i] = lines[i].replace(/(\r?)$/, ' (revised)$1');
-    return { bytes: Buffer.from(joinFrontMatter(fm.fields, fm.order, lines.join('\n'))), digestKey, note: `body edited; "${digestKey}" left unchanged` };
+    return { bytes: Buffer.from(joinFrontMatter(fm.fields, fm.order, lines.join('\n'))), digestKey, note: `body edited; ${digestKey} kept` };
   },
 
   verify(ctx, m) {

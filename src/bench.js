@@ -61,7 +61,7 @@ export function runBenchCli(flags, io, { root, version }) {
   const W = termWidth(io.stdout);
   const w = (s = '') => io.stdout.write(s.replace(/\s+$/, '') + '\n');
   const COL = 15;
-  const famW = 28;
+  const famW = 27;
   const fixW = Math.min(20, Math.max(12, W - 4 - 4 - famW - COL * guards.length));
 
   if (!flags.json) {
@@ -100,10 +100,13 @@ export function runBenchCli(flags, io, { root, version }) {
     w();
     const naive = result.coverage.naive;
     const hard = result.coverage.hardened;
-    w(`  The naive guard is blind to ${c.redBold(`${naive.tested - naive.caught} of ${naive.tested}`)} failure families; the hardened guard to ${hard.tested - hard.caught === 0 ? c.greenBold('0') : c.redBold(hard.tested - hard.caught)}.`);
+    const blind = (k) => k.tested - k.caught;
+    const show = (k) => (blind(k) ? c.redBold(`${blind(k)} of ${k.tested}`) : c.greenBold(`0 of ${k.tested}`));
+    w(`  Naive guard: blind to ${show(naive)} families.  Hardened guard: blind to ${show(hard)}.`);
     if (result.coverage.yours) {
       const y = result.coverage.yours;
-      w(`  Your guard caught ${y.caught} of ${y.tested} testable families ${c.dim('(INCONCLUSIVE rows: your guard rejected that clean fixture)')}.`);
+      w(`  Your guard: blind to ${show(y)} testable families.`);
+      w(`  ${c.dim('INCONCLUSIVE rows mean your guard rejected that clean fixture.')}`);
     }
     w();
   }

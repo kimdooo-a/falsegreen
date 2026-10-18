@@ -27,7 +27,7 @@ export default {
     return {
       bytes: buildWav(chunks),
       added: frames / w.fmt.sampleRate,
-      note: `+${(frames / w.fmt.sampleRate).toFixed(2)} s of digital silence (${w.seconds.toFixed(2)} → ${after.toFixed(2)} s); header valid`,
+      note: `+${(frames / w.fmt.sampleRate).toFixed(2)} s silence (${w.seconds.toFixed(2)} → ${after.toFixed(2)} s)`,
     };
   },
 

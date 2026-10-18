@@ -52,7 +52,7 @@ export default {
     const text = ctx.format === 'json'
       ? ctx.text.replace(JSON.stringify(ref), JSON.stringify(missing))
       : ctx.text.replace(`](${ref}`, `](${missing}`);
-    return { bytes: Buffer.from(text), ref, missing, note: `reference ${ref} → ${missing} (not on disk); the manifest still vouches for it` };
+    return { bytes: Buffer.from(text), ref, missing, note: `${ref} → ${missing.split('/').pop()} (missing)` };
   },
 
   verify(ctx, m) {

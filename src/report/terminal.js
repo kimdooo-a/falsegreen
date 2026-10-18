@@ -13,7 +13,7 @@ export function displayPath(p, cwd = process.cwd()) {
 }
 
 export function termWidth(stream = process.stdout) {
-  const cols = stream.columns || 100;
+  const cols = stream.columns || Number(process.env.COLUMNS) || 100;
   return Math.max(72, Math.min(cols, 100));
 }
 
@@ -31,7 +31,7 @@ export function createTerminalReporter({ out = process.stdout, color, verbose = 
   const c = palette(color);
   const W = termWidth(out);
   const write = (s = '') => out.write(s.replace(/\s+$/, '') + '\n');
-  const COL_FAMILY = 28;
+  const COL_FAMILY = 27;
   const COL_VERDICT = 15;
   const COL_NOTE = W - 2 - 4 - COL_FAMILY - COL_VERDICT;
 

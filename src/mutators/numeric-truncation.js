@@ -66,7 +66,7 @@ export default {
       return {
         bytes: Buffer.from(writeCsv(rows, csvEol(ctx.text))),
         picks: picks.map((p) => ({ i: p.i, j: p.j, value: p.value })),
-        note: `largest ${picks.length} of ${total} values → sci notation (${ex.raw} → ${spreadsheetSci(ex.value)})`,
+        note: `${ex.raw} → ${spreadsheetSci(ex.value)} (top ${picks.length} of ${total})`,
       };
     }
     // JSON: replace the literal in the raw text so formatting is preserved.
@@ -81,7 +81,7 @@ export default {
     return {
       bytes: Buffer.from(text),
       picks,
-      note: `largest ${picks.length} of ${total} numbers → sci notation (${ex.value} → ${spreadsheetSci(ex.value)})`,
+      note: `${ex.value} → ${spreadsheetSci(ex.value)} (top ${picks.length} of ${total})`,
     };
   },
 

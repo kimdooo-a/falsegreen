@@ -42,7 +42,7 @@ export default {
     return {
       bytes: Buffer.from(out),
       target: target.content,
-      note: `font-size ${box.size}→${Math.round(newSize)} on "${target.content.slice(0, 18)}": ~${overBy}px past the canvas edge`,
+      note: `font ${box.size}→${Math.round(newSize)}px: ~${overBy}px past the edge`,
     };
   },
 

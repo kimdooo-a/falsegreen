@@ -62,11 +62,11 @@ export default {
         const v = JSON.parse(ctx.text);
         const { arrays, elements } = countArrays(v);
         const text = stringifyLike(emptyArrays(v), ctx.text);
-        return { bytes: Buffer.from(text), note: `${elements} element${elements === 1 ? '' : 's'} in ${arrays} array${arrays === 1 ? '' : 's'} → []; every key kept` };
+        return { bytes: Buffer.from(text), note: `${elements} element${elements === 1 ? '' : 's'} → []; every key kept` };
       }
       case 'csv': {
         const rows = parseCsv(ctx.text);
-        return { bytes: Buffer.from(writeCsv([rows[0]], csvEol(ctx.text))), note: `header kept, ${rows.length - 1} data rows dropped` };
+        return { bytes: Buffer.from(writeCsv([rows[0]], csvEol(ctx.text))), note: `header kept, ${rows.length - 1} rows dropped` };
       }
       case 'markdown': {
         const fm = splitFrontMatter(ctx.text);
@@ -81,12 +81,12 @@ export default {
         const root = svgRoot(ctx.text);
         const close = ctx.text.lastIndexOf('</svg>');
         const text = ctx.text.slice(0, root.index + root[0].length) + ctx.text.slice(close);
-        return { bytes: Buffer.from(text), note: '<svg> root kept, every child element removed' };
+        return { bytes: Buffer.from(text), note: '<svg> root kept, all children removed' };
       }
       case 'wav': {
         const w = parseWav(ctx.bytes);
         const chunks = w.chunks.map((c) => (c.id === 'data' ? { id: 'data', data: Buffer.alloc(0) } : c));
-        return { bytes: buildWav(chunks), note: `header intact, ${w.frames} audio frames → 0` };
+        return { bytes: buildWav(chunks), note: `valid header, ${w.frames} frames → 0` };
       }
       default: throw new Error(`unsupported format ${ctx.format}`);
     }

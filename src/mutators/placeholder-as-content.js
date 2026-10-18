@@ -100,7 +100,7 @@ export default {
     return {
       bytes,
       originals,
-      note: `${originals.length} text field${originals.length === 1 ? '' : 's'} → template text (size ${pct(ctx.bytes.length, bytes.length)})`,
+      note: `${originals.length} field${originals.length === 1 ? '' : 's'} → template text, size ${pct(ctx.bytes.length, bytes.length)}`,
     };
   },
   verify(ctx, m) {
