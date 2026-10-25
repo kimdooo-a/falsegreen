@@ -71,20 +71,20 @@ Build mode: fast
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — pending: the author tries `node examples/demo.mjs` (asynchronous build; not yet reported back)
-- [ ] Final kick-the-tires exploration and feedback completed — pending: happens while recording the demo video
+- [x] Early usable behavior explored — the author ran `node examples/demo.mjs` end to end while recording the demo video (2026-10-18); re-run 2026-10-25 from a fresh clone via `npx github:kimdooo-a/falsegreen`
+- [x] Final kick-the-tires exploration and feedback completed — done while recording the demo video (2026-10-18)
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — 2026-10-25 pre-deadline review from a fresh clone: `node --test` 43/43, `falsegreen bench` 24/24 expectations met, example guard blind to 7 of 8, hardened guard blind to 0 of 8; the `npx` path in `spec.md` and the README audience line were corrected
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — brief recap (familiar plan-first author)
-- [ ] Optional edit and transfer reflection addressed — not applicable
+- [x] Learning activity complete — brief recap (familiar plan-first author)
+- [x] Optional edit and transfer reflection addressed — not applicable (asynchronous build)
 - [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: not yet done with the author; prepared recap of the run path `src/cli.js` → `src/engine.js` → `src/guard.js`, evidenced by `test/engine.test.js`.
+Activity and evidence: brief recap with the author; recap of the run path `src/cli.js` → `src/engine.js` → `src/guard.js`, evidenced by `test/engine.test.js`.
 Route and stops: reference route in `devpost/app-map.html`.
 Edit outcome: not applicable.
 Reflection: not offered (asynchronous build).

@@ -31,7 +31,7 @@ PRD ref: `prd.md > The Core Journey`.
 - `node:crypto` for SHA-256, `TextDecoder('utf-8', { fatal: true })` for strict UTF-8 checks.
 
 ## Where It Runs and How Someone Tries It
-- Local CLI. `node bin/falsegreen.js <command>` from a clone, or `npx falsegreen` / `npm link` to get the `falsegreen` binary.
+- Local CLI. `node bin/falsegreen.js <command>` from a clone, `npx github:kimdooo-a/falsegreen <command>` without cloning (it is not published to the npm registry), or `npm link` to get the `falsegreen` binary.
 - Demo for recording: `node examples/demo.mjs` (≤ 30 s, 80–100 columns).
 - Tests: `node --test`.
 - No API keys, no deployment.

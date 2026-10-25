@@ -3,6 +3,8 @@
 **Mutation testing for the guards in your pipeline.**
 falsegreen breaks a known-good artifact on purpose, hands it to your verify step, and reports every time the verify step still says *pass*. That pass is a **false green**.
 
+For developers whose AI agent or automated pipeline has a verify step: falsegreen tells you which kinds of broken output that step would wave through.
+
 ```
 npx github:kimdooo-a/falsegreen run --guard "python verify.py {artifact}" --artifact out/report.json
 ```
